@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LiraLanches-LL • Vendas & Estoque</title>
+  
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">LL</div>
+      <div>
+        <div class="title">LiraLanches-LL</div>
+        <div class="sub">Vendas, Estoque e Relatórios • </div>
+      </div>
+      <div class="right kpi" id="kpiResumo"></div>
+    </header>
+
+    <nav class="bar">
+      <button class="tab active" data-tab="produtos">Produtos</button>
+      <button class="tab" data-tab="vendas">Vendas</button>
+      <button class="tab" data-tab="relatorios">Relatórios</button>
+    </nav>
+
+    <!-- Produtos -->
+    <section id="tab-produtos" class="grid grid-2">
+      <div class="card">
+        <h3>Cadastrar produto</h3>
+        <div class="row">
+          <input id="pNome" placeholder="Nome do produto"/>
+          <input id="pPreco" placeholder="Preço (R$)" inputmode="decimal"/>
+          <input id="pEstoque" placeholder="Estoque inicial" inputmode="numeric"/>
+        </div>
+        <div class="row">
+          <button class="primary" id="btnAddProduto">Salvar produto</button>
+          <button class="ghost" id="btnDemo">Carregar exemplos</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Produtos cadastrados</h3>
+        <div class="row">
+          <input id="busca" placeholder="Buscar por nome"/>
+          <button id="btnLimparBusca">Limpar</button>
+        </div>
+        <div style="overflow:auto; max-height:420px;">
+          <table id="tblProdutos">
+            <thead><tr>
+              <th>ID</th><th>Produto</th><th>Preço</th><th>Estoque</th><th>Ações</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vendas -->
+    <section id="tab-vendas" class="grid grid-2 hidden">
+      <div class="card">
+        <h3>Registrar venda</h3>
+        <div class="row">
+          <select id="vProduto"></select>
+          <input id="vQtd" placeholder="Quantidade" inputmode="numeric"/>
+        </div>
+        <div class="row">
+          <input id="vPreco" readonly placeholder="Preço unitário"/>
+          <input id="vTotal" readonly placeholder="Total"/>
+        </div>
+        <div class="row">
+          <button class="primary" id="btnVender">Confirmar venda</button>
+          <button id="btnCancelarCampos">Limpar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Vendas recentes</h3>
+        <div style="overflow:auto; max-height:420px;">
+          <table id="tblVendas">
+            <thead><tr>
+              <th>#</th><th>Produto</th><th>Qt</th><th>Total</th><th>Data</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Relatórios -->
+    <section id="tab-relatorios" class="grid hidden">
+      <div class="card">
+        <h3>Resumo diário</h3>
+        <div class="kpi" id="kpiRelatorios"></div>
+        <div class="row">
+          <button id="btnExportCSV" class="ghost">Exportar CSV das vendas</button>
+          <button id="btnExportJSON" class="ghost">Backup (JSON)</button>
+          <label class="ghost" style="display:inline-grid; place-items:center; cursor:pointer;">
+            <input id="importJSON" type="file" accept="application/json" class="hidden"/>Importar JSON
+          </label>
+          <button class="warn right" id="btnApagar">Apagar tudo (cuidado)</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Produtos mais vendidos</h3>
+        <table id="tblTop">
+          <thead><tr><th>Produto</th><th>Qt total</th><th>Faturamento</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  <div class="footer">        PROGRAMAÇÃO PARA DISPOSITIVOS MÓVEIS EM ANDROID.</div>
+  </div>
+    <div class="footer">      © LiraLanches-LL.</div>
+  </div>
+
+
+    <script src="index.js"></script>
+</body>
+</html>
